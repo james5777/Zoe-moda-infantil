@@ -6,8 +6,18 @@
 {% endblock %}
 
 {% block content %}
+    
 
     <div class="container mt-5 ">
+        <div class="row justify-content-center align-items-center">
+            {% for message in get_flashed_messages() %}
+            <div class="col-6 text-center">
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
         <div class="row justify-content-evenly align-items-center shadow">
 
             <!-- Columna 1: Carrusel -->
@@ -42,10 +52,10 @@
                 <div class="w-100 p-1" style="margin: auto; ">
                     <a href="{{ url_for('home.index') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" class="img-fluid rounded mx-auto d-block mb-3 shadow" alt="..."
                         style="width: 200px;"></a>
-                    <form class="row g-3 needs-validation" novalidate>
+                    <form class="row g-3 needs-validation"  method="POST">
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">Nombres:</label>
-                            <input type="text" class="form-control" id="validationCustom01" required>
+                            <input type="text" class="form-control" id="username" name="NombreUsuario"  required>
                             <div class="valid-feedback">
                                 Se ve bien!
                             </div>
@@ -55,7 +65,7 @@
                         </div>
                         <div class="col-md-4">
                             <label for="validationCustom02" class="form-label">Apellidos:</label>
-                            <input type="text" class="form-control" id="validationCustom02" required>
+                            <input type="text" class="form-control" id="validationCustom02"  name="ApellidoUsuario" required>
                             <div class="valid-feedback">
                                 Se ve bien!
                             </div>
@@ -65,7 +75,7 @@
                         </div>
                         <div class="col-md-4">
                             <label for="validationCustom02" class="form-label">Documento de identidad:</label>
-                            <input type="text" class="form-control" id="validationCustom02" required>
+                            <input type="text" class="form-control" id="validationCustom02"  name="IDUsuario" required>
                             <div id="passwordHelpBlock" class="form-text">
                                 Debe tener entre 8 y 13 caracteres
                             </div>
@@ -75,61 +85,47 @@
                         </div>
                            <div class="col-md-6">
                             <label for="validationCustom03" class="form-label">Direccion de residencia:</label>
-                            <input type="text" class="form-control" id="validationCustom03" required>
+                            <input type="text" class="form-control" id="validationCustom03"  name="Direccion" required>
                             <div class="invalid-feedback">
                                 Campo requerido
                             </div>
                         </div>
                            <div class="col-md-6">
                             <label for="validationCustom03" class="form-label">Barrio:</label>
-                            <input type="text" class="form-control" id="validationCustom03" required>
+                            <input type="text" class="form-control" id="validationCustom03"  name="Barrio" required>
                             <div class="invalid-feedback">
                                 Campo requerido
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="validationCustom03" class="form-label">Ciudad:</label>
-                            <input type="text" class="form-control" id="validationCustom03" required>
+                            <input type="text" class="form-control" id="validationCustom03"  name="Ciudad" required>
                             <div class="invalid-feedback">
                                 Campo requerido.
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label for="validationCustom04" class="form-label">Departamento:</label>
-                            <select class="form-select" id="validationCustom04" required>
-                                <option selected disabled value="">Selecciona</option>
-                                <option>Antioquia</option>
-                                <option>Cundinamarca</option>
-                                <option>Santander</option>
-                                <option>Huila</option>
-                                <option>Boyaca</option>
-                                <option>Choco</option>
-                                <option>Cauca</option>
-                                <option>Valle del Cauca</option>
-                                <option>Norte de santander</option>
-                            </select>
+                            <label for="validationCustom03" class="form-label">Departamento:</label>
+                            <input type="text" class="form-control" id="validationCustom03"  name="Departamento" required>
                             <div class="invalid-feedback">
-                                Campo requerido
+                                Campo requerido.
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="validationCustom02" class="form-label">Celular:</label>
-                            <input type="text" class="form-control" id="validationCustom02" required>
+                            <input type="text" class="form-control" id="validationCustom02"  name="Celular" required>
                             <div class="invalid-feedback">
                                 Campo requerido
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="validationCustom05" class="form-label">Correo electronico:</label>
-                            <input type="email" class="form-control" id="validationCustom05" required>
-                            <div class="invalid-feedback">
-                                Ingrese un correo electronico valido
-                            </div>
+                            <label for="validationCustom03" class="form-label">Correo electronico:</label>
+                            <input type="email" class="form-control" id="validationCustom03"  name="CorreoElectronico" required>
                         </div>
                         <div class="col-md-6">
                             <label for="inputPassword5" class="form-label">Contraseña:</label>
                             <input type="password" id="inputPassword5" class="form-control"
-                                aria-describedby="passwordHelpBlock">
+                                aria-describedby="passwordHelpBlock" name="Contraseña" required minlength="10" maxlength="15">
                             <div id="passwordHelpBlock" class="form-text">
                                 Tu contraseña debe contener entre 10 y 15 caracteres.
                             </div>
@@ -137,6 +133,13 @@
                                 Ingrese una contraseña valida que tenga entre 10 y 15 caracteres.
                             </div>
                         </div>
+                        {% for message in get_flashed_messages() %}
+                        <div class="col-12 text-center">
+                            <div class="alert alert-danger" role="alert">
+                                {{ message }}
+                            </div>
+                        </div>
+                        {% endfor %}
                         <div class="col-12">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
@@ -148,6 +151,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="col-12">
                             <button class="btn btn-primary w-100" type="submit">Registrarse</button>
                             <p class="text-center pt-1">o</p>

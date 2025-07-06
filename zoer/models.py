@@ -225,9 +225,12 @@ class Usuario(db.Model):
     NombreUsuario = db.Column(db.String(45), nullable=False)
     ApellidoUsuario = db.Column(db.String(45), nullable=False)
     CorreoElectronico = db.Column(db.String(45), nullable=False, unique=True) # UQ_Correo
-    Contraseña = db.Column(db.String(13), nullable=False) # NOTA: Considera un tamaño mayor para contraseñas hasheadas (ej. String(128))
+    Contraseña = db.Column(db.String(255), nullable=False) # NOTA: Considera un tamaño mayor para contraseñas hasheadas (ej. String(128))
     Direccion = db.Column(db.String(100), nullable=False)
     Celular = db.Column(db.String(10), nullable=False)
+    Ciudad = db.Column(db.String(50), nullable=True)
+    Barrio = db.Column(db.String(50), nullable=True)
+    Departamento = db.Column(db.String(50), nullable=True)
 
     # Relaciones inversas
     # carritos_rel = db.relationship('CarritoDeCompras', backref='usuario', lazy=True) # Ya definido en CarritoDeCompras
@@ -235,7 +238,7 @@ class Usuario(db.Model):
     # pedidos_rel = db.relationship('Pedido', backref='usuario', lazy=True) # Ya definido en Pedido
 
 
-    def __init__(self, IDUsuario, NombreUsuario, ApellidoUsuario, CorreoElectronico, Contraseña, Direccion, Celular):
+    def __init__(self, IDUsuario, NombreUsuario, ApellidoUsuario, CorreoElectronico, Contraseña, Direccion, Celular, Ciudad=None, Barrio=None, Departamento=None    ):
         self.IDUsuario = IDUsuario
         self.NombreUsuario = NombreUsuario
         self.ApellidoUsuario = ApellidoUsuario
@@ -243,6 +246,9 @@ class Usuario(db.Model):
         self.Contraseña = Contraseña
         self.Direccion = Direccion
         self.Celular = Celular
+        self.Ciudad = Ciudad
+        self.Barrio = Barrio
+        self.Departamento = Departamento
 
     def __repr__(self):
         return f'<Usuario {self.NombreUsuario} {self.ApellidoUsuario}>'

@@ -1,7 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+
 db = SQLAlchemy()  # Inicializar la instancia de SQLAlchemy
+# migrate = Migrate()  # Inicializar la instancia de Flask-Migrate
 
 
 def create_app():   
