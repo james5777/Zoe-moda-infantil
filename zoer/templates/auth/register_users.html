@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-5 ">
+        <div class="row justify-content-evenly align-items-center shadow">
+
+            <!-- Columna 1: Carrusel -->
+            <div class="col-md-6 d-none d-lg-block">
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner shadow">
+                        <div class="carousel-item active">
+                            <img src="{{ url_for('static', filename='img/imagen_bebe.jpg') }}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url_for('static', filename='img/producto_4.jpg') }}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url_for('static', filename='img/producto_5.jpg') }}" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Columna 2: Formulario -->
+            <div class="col-sm-12 col-md-12 col-lg-6 d-flex align-items-center justify-content-center min-vh-100 mb-2">
+                <div class="w-100 p-1" style="margin: auto; ">
+                    <a href="{{ url_for('home.index') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" class="img-fluid rounded mx-auto d-block mb-3 shadow" alt="..."
+                        style="width: 200px;"></a>
+                    <form class="row g-3 needs-validation" novalidate>
+                        <div class="col-md-4">
+                            <label for="validationCustom01" class="form-label">Nombres:</label>
+                            <input type="text" class="form-control" id="validationCustom01" required>
+                            <div class="valid-feedback">
+                                Se ve bien!
+                            </div>
+                            <div class="invalid-feedback">
+                                Campo requerido
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom02" class="form-label">Apellidos:</label>
+                            <input type="text" class="form-control" id="validationCustom02" required>
+                            <div class="valid-feedback">
+                                Se ve bien!
+                            </div>
+                            <div class="invalid-feedback">
+                                Campo requerido
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom02" class="form-label">Documento de identidad:</label>
+                            <input type="text" class="form-control" id="validationCustom02" required>
+                            <div id="passwordHelpBlock" class="form-text">
+                                Debe tener entre 8 y 13 caracteres
+                            </div>
+                            <div class="invalid-feedback">
+                                Por favor ingresa un numero de cedula valido.
+                            </div>
+                        </div>
+                           <div class="col-md-6">
+                            <label for="validationCustom03" class="form-label">Direccion de residencia:</label>
+                            <input type="text" class="form-control" id="validationCustom03" required>
+                            <div class="invalid-feedback">
+                                Campo requerido
+                            </div>
+                        </div>
+                           <div class="col-md-6">
+                            <label for="validationCustom03" class="form-label">Barrio:</label>
+                            <input type="text" class="form-control" id="validationCustom03" required>
+                            <div class="invalid-feedback">
+                                Campo requerido
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom03" class="form-label">Ciudad:</label>
+                            <input type="text" class="form-control" id="validationCustom03" required>
+                            <div class="invalid-feedback">
+                                Campo requerido.
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom04" class="form-label">Departamento:</label>
+                            <select class="form-select" id="validationCustom04" required>
+                                <option selected disabled value="">Selecciona</option>
+                                <option>Antioquia</option>
+                                <option>Cundinamarca</option>
+                                <option>Santander</option>
+                                <option>Huila</option>
+                                <option>Boyaca</option>
+                                <option>Choco</option>
+                                <option>Cauca</option>
+                                <option>Valle del Cauca</option>
+                                <option>Norte de santander</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Campo requerido
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom02" class="form-label">Celular:</label>
+                            <input type="text" class="form-control" id="validationCustom02" required>
+                            <div class="invalid-feedback">
+                                Campo requerido
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom05" class="form-label">Correo electronico:</label>
+                            <input type="email" class="form-control" id="validationCustom05" required>
+                            <div class="invalid-feedback">
+                                Ingrese un correo electronico valido
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword5" class="form-label">Contraseña:</label>
+                            <input type="password" id="inputPassword5" class="form-control"
+                                aria-describedby="passwordHelpBlock">
+                            <div id="passwordHelpBlock" class="form-text">
+                                Tu contraseña debe contener entre 10 y 15 caracteres.
+                            </div>
+                            <div class="invalid-feedback">
+                                Ingrese una contraseña valida que tenga entre 10 y 15 caracteres.
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                <label class="form-check-label" for="invalidCheck">
+                                    Aceptar <a href="#">terminos y condiciones.</a>
+                                </label>
+                                <div class="invalid-feedback">
+                                    Debes aceptar antes de enviar.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100" type="submit">Registrarse</button>
+                            <p class="text-center pt-1">o</p>
+                            <a href="{{ url_for('auth.login_users') }}" type="button" class="btn btn-primary w-100">Iniciar sesion</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+  {% block footer %}
+  {% endblock %}
+  
+{% endblock %}
+  
