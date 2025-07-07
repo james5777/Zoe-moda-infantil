@@ -79,6 +79,10 @@ def login_users():
     # Si el método es GET, simplemente renderizar la plantilla de login
     return render_template('auth/login_users.html')
 
+@bp.route('/login_admins')
+def login_admins():
+    return render_template('auth/login_admins.html')
+
 
 # mantener al usuario logueado durante la sesión
 @bp.before_app_request

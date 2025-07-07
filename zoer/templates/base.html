@@ -96,14 +96,23 @@
                         <i class="bi bi-person" style="font-size: 1.8rem;"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+                        {% if g.user %}
+                        <li><span class="dropdown-item fw-bold">¡Hola  {{ g.user.NombreUsuario }}</span></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        {% endif %}
+                        {% if not g.user %}
                         <li><a class="dropdown-item" href="{{ url_for('auth.login_users') }}">Iniciar sesión</a></li>
                         <li><a class="dropdown-item" href="{{ url_for('auth.register_users') }}">Registrarse</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Mi cuenta</a></li>
+                          {% endif %}
+                        <li><a class="dropdown-item" href="{{ url_for('auth.profile') }}">Mi cuenta</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Cerrar sesion</a></li>
                         <hr class="dropdown-divider">
-                        <li><a class="dropdown-item" href="login_admin/login_admins.html">Administrador</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('auth.login_admins') }}">Administrador</a></li>
                     </ul>
                 </div>
             </div>

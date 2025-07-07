@@ -27,6 +27,11 @@ def create_app():
     from zoer import producto #
     app.register_blueprint(producto.bp) # productos.bp aqui se refiere al blueprint definido en productos.py es el argumento que se pasa al registrar el blueprint, el pri
 
+
+    #Importar vistas de admin
+    from zoer import admin
+    app.register_blueprint(admin.bp)
+
     from zoer import models  # Importar modelos para que se registren en la base de datos
 
     with app.app_context():

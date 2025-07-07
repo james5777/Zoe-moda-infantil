@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Panel de Administración{% endblock %}
+
+{% block content %}
+    <!-- Encabezado del Panel de Administración -->
+    <div class="container mt-5 mb-4 text-center">
+        <h1 class="display-4">Panel de Administración</h1>
+        <p class="lead">Gestión centralizada de Zoe Moda Infantil</p>
+    </div>
+
+    <!-- Sección de Gestión Principal (Tarjetas) -->
+    <div class="container mt-5">
+        <div class="row justify-content-center g-4"> {# g-4 para espacio entre tarjetas #}
+
+            {# Tarjeta de Gestión de Carrusel #}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow rounded-3">
+                    <div class="card-body text-center">
+                        <i class="bi bi-images" style="font-size: 3rem; color: #dc3545;"></i> {# Icono de Bootstrap Icons #}
+                        <h5 class="card-title mt-3">Gestión de Carrusel</h5>
+                        <p class="card-text">Administra las imágenes de la página de inicio.</p>
+                        {# Este enlace asumirá una ruta 'manage_carousel' dentro del blueprint 'admin' #}
+                        <a href="{{ url_for('admin.manage_carousel') }}" class="btn btn-danger w-100 mt-2">Ver/Editar Imágenes</a>
+                    </div>
+                </div>
+            </div>
+
+            {# Tarjeta de Gestión de Productos #}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow rounded-3">
+                    <div class="card-body text-center">
+                        <i class="bi bi-boxes" style="font-size: 3rem; color: #dc3545;"></i> {# Icono de Bootstrap Icons #}
+                        <h5 class="card-title mt-3">Gestión de Productos</h5>
+                        <p class="card-text">Añade, edita o elimina productos del catálogo.</p>
+                        {# Estos enlaces asumirán rutas 'list_products' y 'add_product' dentro del blueprint 'admin' #}
+                        <a href="{{ url_for('admin.list_products') }}" class="btn btn-danger w-100 mt-2">Ver Productos</a>
+                        <a href="{{ url_for('admin.add_product') }}" class="btn btn-outline-danger w-100 mt-2">Añadir Nuevo Producto</a>
+                    </div>
+                </div>
+            </div>
+
+            {# Tarjeta de Gestión de Pedidos #}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow rounded-3">
+                    <div class="card-body text-center">
+                        <i class="bi bi-journal-check" style="font-size: 3rem; color: #dc3545;"></i> {# Icono de Bootstrap Icons #}
+                        <h5 class="card-title mt-3">Gestión de Pedidos</h5>
+                        <p class="card-text">Revisa y gestiona los pedidos de los clientes.</p>
+                        {# Este enlace asumirá una ruta 'list_orders' dentro del blueprint 'admin' #}
+                        <a href="{{ url_for('admin.list_orders') }}" class="btn btn-danger w-100 mt-2">Ver Pedidos</a>
+                    </div>
+                </div>
+            </div>
+
+            {# Tarjeta de Gestión de Usuarios #}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow rounded-3">
+                    <div class="card-body text-center">
+                        <i class="bi bi-people" style="font-size: 3rem; color: #dc3545;"></i> {# Icono de Bootstrap Icons #}
+                        <h5 class="card-title mt-3">Gestión de Usuarios</h5>
+                        <p class="card-text">Administra las cuentas de los usuarios registrados.</p>
+                        {# Este enlace asumirá una ruta 'list_users' dentro del blueprint 'admin' #}
+                        <a href="{{ url_for('admin.list_users') }}" class="btn btn-danger w-100 mt-2">Ver Usuarios</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Puedes añadir más secciones o estadísticas aquí si lo deseas -->
+
+{% endblock %}
