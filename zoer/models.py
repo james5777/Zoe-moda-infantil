@@ -253,3 +253,30 @@ class Usuario(db.Model):
     def __repr__(self):
         return f'<Usuario {self.NombreUsuario} {self.ApellidoUsuario}>'
 
+class ImagenProducto(db.Model):
+    """
+    Modelo para la tabla 'ImagenesProducto'.
+    Almacena las rutas de las imágenes asociadas a cada producto.
+    """
+    __tablename__ = 'ImagenesProducto'
+    IDImagen = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
+    IDProducto = db.Column(db.Integer, db.ForeignKey('Productos.IDProducto'), nullable=False)
+    RutaImagen = db.Column(db.String(255), nullable=False) # Ruta relativa o absoluta de la imagen
+    EsPrincipal = db.Column(db.Boolean, default=False, nullable=False) # Para marcar una imagen como principal
+    Orden = db.Column(db.Integer, default=0, nullable=False) # Para definir un orden de visualización
+
+    # Relación con la tabla Producto
+    producto_rel = db.relationship('Producto', backref='imagenes', lazy=True)
+
+    def __init__(self, IDProducto, RutaImagen, EsPrincipal=False, Orden=0):
+        self.IDProducto = IDProducto
+        self.RutaImagen = RutaImagen
+        self.EsPrincipal = EsPrincipal
+        self.Orden = Orden
+
+    def __repr__(self):
+        return f'<Imagen {self.IDImagen} - Producto: {self.IDProducto} - Ruta: {self.RutaImagen}>'
+        
+        
+        
+        

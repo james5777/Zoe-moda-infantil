@@ -90,132 +90,22 @@
 
     <div class="container ">
         <div class="row justify-content-center">
+            {% for producto in productos %}
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5">
                 <div class="card" style="width: 14rem;">
                     <div class="card-img-top d-flex align-items-center justify-content-center overflow-hidden mt-2"
                         style="height: 220px;">
-                        <img src="{{ url_for('static', filename='img/producto_1.jpg') }}" class="mw-100 mh-100 shadow rounded"
+                        <img src="{{ url_for('static', filename=producto.imagen_url.replace('static/', '')) }}" class="mw-100 mh-100 shadow rounded"
                             style="object-fit: cover; object-position: center;">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Polo blanco - niño</h5>
-                        <p class="card-text">$45.000</p>
+                        <h5 class="card-title">{{ producto.producto.NombreProducto}}</h5>
+                        <p class="card-text">${{ "%.0f" | format(producto.producto.Precio)}}</p>
                         <a href="#" class="btn btn-primary">Agregar al carrito</a>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5">
-                <div class="card" style="width: 14rem;">
-                    <div class="card-img-top d-flex align-items-center justify-content-center overflow-hidden mt-2"
-                        style="height: 220px;">
-                        <img src="{{ url_for('static', filename='img/producto_2.jpg') }}" class="mw-100 mh-100 shadow rounded"
-                            style="object-fit: cover; object-position: center;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">OVEROL NIÑO - AZUL</h5>
-                        <p class="card-text">$35.000</p>
-                        <a href="#" class="btn btn-primary">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5">
-                <div class="card" style="width: 14rem;">
-                    <div class="card-img-top d-flex align-items-center justify-content-center overflow-hidden mt-2"
-                        style="height: 220px;">
-                        <img src="{{ url_for('static', filename='img/producto_3.jpg') }}" class="mw-100 mh-100 shadow rounded"
-                            style="object-fit: cover; object-position: center;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">VESTIDO NIÑA - PALO DE ROSA</h5>
-                        <p class="card-text">$55.000</p>
-                        <a href="#" class="btn btn-primary">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5">
-                <div class="card" style="width: 14rem;">
-                    <div class="card-img-top d-flex align-items-center justify-content-center overflow-hidden mt-2"
-                        style="height: 220px;">
-                        <img src="{{ url_for('static', filename='img/producto_4.jpg') }}" class="mw-100 mh-100 shadow rounded"
-                            style="object-fit: cover; object-position: center;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">VESTIDO NIÑA - BLANCO - FUCSIA</h5>
-                        <p class="card-text">$75.000</p>
-                        <a href="#" class="btn btn-primary">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5">
-                <div class="card" style="width: 14rem;">
-                    <div class="card-img-top d-flex align-items-center justify-content-center overflow-hidden mt-2"
-                        style="height: 220px;">
-                        <img src="{{ url_for('static', filename='img/producto_5.jpg') }}" class="mw-100 mh-100 shadow rounded"
-                            style="object-fit: cover; object-position: center;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">ENTERIZO NIÑA + BLUSA</h5>
-                        <p class="card-text">$85.000</p>
-                        <a href="#" class="btn btn-primary">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5">
-                <div class="card" style="width: 14rem;">
-                    <div class="card-img-top d-flex align-items-center justify-content-center overflow-hidden mt-2"
-                        style="height: 220px;">
-                        <img src="{{ url_for('static', filename='img/producto_6.jpg') }}" class="mw-100 mh-100 shadow rounded"
-                            style="object-fit: cover; object-position: center;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">CAMISA CUADROS - ROJA</h5>
-                        <p class="card-text">$85.000</p>
-                        <a href="#" class="btn btn-primary">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5">
-                <div class="card" style="width: 14rem;">
-                    <div class="card-img-top d-flex align-items-center justify-content-center overflow-hidden mt-2"
-                        style="height: 220px;">
-                        <img src="{{ url_for('static', filename='img/producto_7.jpg') }}" class="mw-100 mh-100 shadow rounded"
-                            style="object-fit: cover; object-position: center;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">CONJUNTO NIÑO</h5>
-                        <p class="card-text">$135.000</p>
-                        <a href="#" class="btn btn-primary">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5">
-                <div class="card" style="width: 14rem;">
-                    <div class="card-img-top d-flex align-items-center justify-content-center overflow-hidden mt-2"
-                        style="height: 220px;">
-                        <img src="{{ url_for('static', filename='img/producto_8.jpg') }}" class="mw-100 mh-100 shadow rounded"
-                            style="object-fit: cover; object-position: center;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">GORRITA NIÑO - BEIGE</h5>
-                        <p class="card-text">$28.000</p>
-                        <a href="#" class="btn btn-primary">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5">
-                <div class="card" style="width: 14rem;">
-                    <div class="card-img-top d-flex align-items-center justify-content-center overflow-hidden mt-2"
-                        style="height: 220px;">
-                        <img src="{{ url_for('static', filename='img/producto_9.jpg') }}" class="mw-100 mh-100 shadow rounded"
-                            style="object-fit: cover; object-position: center;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">GORRITA NIÑA - ROSA</h5>
-                        <p class="card-text">$32.000</p>
-                        <a href="#" class="btn btn-primary">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 

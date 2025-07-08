@@ -3,7 +3,7 @@ from flask import Blueprint, render_template, request, url_for, redirect, flash,
 from werkzeug.security import generate_password_hash, check_password_hash
 
 # Importar el modelo de Usuario y la base de datos
-from zoer.models import Usuario
+from zoer.models import Usuario, Administrador
 from zoer import db
 
 # Importar functools para el decorador
