@@ -19,17 +19,14 @@ def admin_dashboard():
 
 
 
+@bp.route('/crear_producto')
+def crear_producto():
+    return render_template('admin/crear_producto.html')
+
+
+
 @bp.route('/manage_carousel')
 def manage_carousel():
-
-
-
-
-
-
-
-
-    
     return render_template('admin/manage_carousel.html')
 
 
@@ -40,9 +37,7 @@ def list_products():
 
 
 
-@bp.route('/add_product')
-def add_product():
-    return render_template('admin/add_product.html')
+
 
 
 

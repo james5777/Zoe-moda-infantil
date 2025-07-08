@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear Producto{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 mb-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-7">
+                <div class="card shadow rounded-3 p-4">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Crear Nuevo Producto</h2>
+                        <p class="text-center text-muted mb-4">Ingresa los detalles del nuevo producto.</p>
+
+                        {# Importante: Para subir archivos, el formulario debe tener enctype="multipart/form-data" #}
+                        <form class="row g-3 needs-validation" method="POST"  enctype="multipart/form-data" novalidate>
+                            
+                            {# Nombre del Producto #}
+                            <div class="col-md-12">
+                                <label for="nombreProducto" class="form-label">Nombre del Producto:</label>
+                                <input type="text" class="form-control rounded-3" id="nombreProducto" name="NombreProducto" required>
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa el nombre del producto.
+                                </div>
+                            </div>
+
+                            {# Descripción del Producto #}
+                            <div class="col-md-12">
+                                <label for="descripcionProducto" class="form-label">Descripción del Producto:</label>
+                                <textarea class="form-control rounded-3" id="descripcionProducto" name="DescripcionProducto" rows="4" required></textarea>
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa una descripción para el producto.
+                                </div>
+                            </div>
+
+                            {# Precio #}
+                            <div class="col-md-6">
+                                <label for="precio" class="form-label">Precio ($):</label>
+                                <input type="number" class="form-control rounded-3" id="precio" name="Precio" step="0.01" min="0" required>
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa un precio válido.
+                                </div>
+                            </div>
+
+                            {# Cantidad en Stock #}
+                            <div class="col-md-6">
+                                <label for="cantidadStock" class="form-label">Cantidad en Stock:</label>
+                                <input type="number" class="form-control rounded-3" id="cantidadStock" name="CantidadStock" min="0" required>
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa la cantidad en stock.
+                                </div>
+                            </div>
+
+                            {# Categoría #}
+                            <div class="col-md-6">
+                                <label for="categoria" class="form-label">Categoría:</label>
+                                <input type="text" class="form-control rounded-3" id="categoria" name="Categoria" required>
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa la categoría del producto.
+                                </div>
+                            </div>
+
+                            {# Stock Máximo #}
+                            <div class="col-md-6">
+                                <label for="stockMax" class="form-label">Stock Máximo:</label>
+                                <input type="number" class="form-control rounded-3" id="stockMax" name="StockMax" min="0" required>
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa el stock máximo.
+                                </div>
+                            </div>
+
+                            {# Stock Mínimo #}
+                            <div class="col-md-6">
+                                <label for="stockMin" class="form-label">Stock Mínimo:</label>
+                                <input type="number" class="form-control rounded-3" id="stockMin" name="StockMin" min="0" required>
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa el stock mínimo.
+                                </div>
+                            </div>
+
+                            {# Campo para subir imágenes #}
+                            <div class="col-md-12 mt-3">
+                                <label for="productImages" class="form-label">Imágenes del Producto (hasta 6):</label>
+                                <input class="form-control rounded-3" type="file" id="productImages" name="productImages" accept="image/*" multiple required>
+                                <div class="form-text">Puedes seleccionar hasta 6 imágenes (JPG, PNG, GIF, etc.).</div>
+                                <div class="invalid-feedback">
+                                    Por favor, sube al menos una imagen del producto.
+                                </div>
+                            </div>
+                            
+                            {# Botón de Enviar #}
+                            <div class="col-12 mt-4">
+                                <button class="btn btn-danger w-100 rounded-3 py-2" type="submit">Crear Producto</button>
+                            </div>
+                            
+                            {# Botón para volver al Panel de Administración #}
+                            <div class="col-12 text-center mt-3">
+                                <a href="{{ url_for('admin.admin_dashboard') }}" class="btn btn-outline-secondary w-100 rounded-3">Volver al Panel de Administración</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

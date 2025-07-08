@@ -111,8 +111,10 @@
                           {% endif %}
                         <li><a class="dropdown-item" href="{{ url_for('auth.profile') }}">Mi cuenta</a></li>
                         <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Cerrar sesion</a></li>
+                        {% if g.user%}
                         <hr class="dropdown-divider">
                         <li><a class="dropdown-item" href="{{ url_for('auth.login_admins') }}">Administrador</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
