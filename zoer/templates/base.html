@@ -113,7 +113,7 @@
                         <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Cerrar sesion</a></li>
                         {% if g.user%}
                         <hr class="dropdown-divider">
-                        <li><a class="dropdown-item" href="{{ url_for('auth.login_admins') }}">Administrador</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('admin.admin_dashboard') }}">Administrador</a></li>
                         {% endif %}
                     </ul>
                 </div>
@@ -151,7 +151,7 @@
     <div class="container-fluid  text-center bg-danger mt-3">
         <div class="row">
             <div class="col-sm-4 col-lg-2 pt-5">
-                <a href="index.html" class="text-decoration-none fs-4 text-secondary-emphasis">Inicio</a>
+                <a href="{{ url_for('home.index') }}" class="text-decoration-none fs-4 text-secondary-emphasis">Inicio</a>
             </div>
             <div class="col-sm-4 col-lg-2 pt-5">
                 <a href="index.html#redes" class="text-decoration-none fs-4 text-secondary-emphasis">Contactanos</a>

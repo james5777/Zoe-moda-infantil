@@ -95,13 +95,12 @@
                 <div class="card" style="width: 14rem;">
                     <div class="card-img-top d-flex align-items-center justify-content-center overflow-hidden mt-2"
                         style="height: 220px;">
-                        <img src="{{ url_for('static', filename=producto.imagen_url.replace('static/', '')) }}" class="mw-100 mh-100 shadow rounded"
-                            style="object-fit: cover; object-position: center;">
+                        <a href="{{ url_for('producto.view_producto', producto_id=producto.producto.IDProducto) }}"><img src="{{ url_for('static', filename=producto.imagen_url)}}" class="mw-100 mh-100 shadow rounded" style="object-fit: cover; object-position: center;" ></a> 
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ producto.producto.NombreProducto}}</h5>
                         <p class="card-text">${{ "%.0f" | format(producto.producto.Precio)}}</p>
-                        <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                        <a href="{{ url_for('producto.view_producto', producto_id=producto.producto.IDProducto) }}" class="btn btn-primary">Ver Detalles</a> 
                     </div>
                 </div>
             </div>

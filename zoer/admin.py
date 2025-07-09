@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, url_for, redirect, flash, session, g
+from flask import Blueprint, render_template, request, url_for, redirect, flash, session, g, current_app
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -73,24 +73,24 @@ def crear_producto():
                 db.session.flush() # Se asegura de que el id se genere
 
                 # Guardar las imagenes del producto
-                upload_folder = 'static/uploads/productos'
-                os.makedirs(upload_folder, exist_ok=True)
+                upload_folder_absolute = os.path.join(current_app.root_path, 'static', 'img')
+                os.makedirs(upload_folder_absolute, exist_ok=True)
 
                 for i, file in enumerate(uploaded_files):
                     if file and file.filename != '':
                         filename = secure_filename(file.filename)
 
                         unique_filename = f"prod_{nuevo_producto.IDProducto}_{i+1}_{filename}"
-                        file_path_full = os.path.join(upload_folder, unique_filename)
+                        file_path_full = os.path.join(upload_folder_absolute, unique_filename)
                         file.save(file_path_full)
 
                         # Ruta relativa para almacenar en la base de datos
-                        ruta_db = os.path.join(upload_folder, unique_filename).replace('\\', '/')
+                        ruta_para_url_for = os.path.join('img', unique_filename).replace('\\', '/')
 
                         #Crear instancia de ImagenProducto
                         nueva_imagen = ImagenProducto(
                             IDProducto=nuevo_producto.IDProducto,
-                            RutaImagen=ruta_db,
+                            RutaImagen=f"static/{ruta_para_url_for}",
                             EsPrincipal=(i == 0), #La primera imagen es la principal
                             Orden=i + 1
 
@@ -99,7 +99,7 @@ def crear_producto():
                 
                 db.session.commit()
                 flash('Producto creado exitosamente.')
-                return redirect(url_for('admin.lista_productos'))
+                return redirect(url_for('home.index'))  # Redirigir a la página de inicio o a donde desees
             
             except Exception as e:
                 db.session.rollback()
@@ -143,3 +143,4 @@ def list_orders():
 @bp.route('/list_users')
 def list_users():
     return render_template('admin/list_users.html')
+

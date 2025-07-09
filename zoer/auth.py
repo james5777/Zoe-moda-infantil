@@ -37,19 +37,36 @@ def register_users():
         # validacion de datos
 
         error = None
+        
+        # ¡NUEVO CÓDIGO AQUÍ! Validar si el IDUsuario ya existe
+        user_id_exists = Usuario.query.filter_by(IDUsuario=IDUsuario).first()
+        if user_id_exists:
+            error = 'El número de identificación (IDUsuario) ya está registrado.'
 
-        #comparando correo electronico con los existentes
-        user_email = Usuario.query.filter_by(CorreoElectronico=CorreoElectronico).first()
+        # comparando correo electronico con los existentes
+        user_email_exists = Usuario.query.filter_by(CorreoElectronico=CorreoElectronico).first()
 
-        if user_email == None:
-            # Guardar el usuario en la base de datos
-            db.session.add(user)
-            db.session.commit()
-            return redirect(url_for('auth.login_users'))
+        # ¡AJUSTE CLAVE AQUÍ!
+        # Solo intentamos guardar si NO hay un error previo (por ID) Y el correo no existe.
+        if error is None and user_email_exists is None:
+            try:
+                db.session.add(user)
+                db.session.commit()
+                flash('Registro exitoso. ¡Ahora puedes iniciar sesión!', 'success')
+                return redirect(url_for('auth.login_users'))
+            except Exception as e:
+                db.session.rollback()
+                # Esto captura errores inesperados de la base de datos (ej. si algo más falla)
+                error = f'Ocurrió un error inesperado al registrar el usuario: {str(e)}'
         else:
-            error = 'El correo electronico ya esta registrado'
-        # Si hay un error, mostrar un mensaje
-        flash(error)
+            # Si ya había un error por ID, o si el correo existe, el error se establece aquí.
+            # Priorizamos el error de ID si ya se había detectado.
+            if error is None: # Si no había error por ID, entonces el error es por el email
+                error = 'El correo electrónico ya está registrado.'
+            
+        # Si hay un error (por validación o por excepción), mostrar un mensaje
+        if error: # Solo flashear si hay un mensaje de error
+            flash(error, 'danger')
 
     return render_template('auth/register_users.html')
 
