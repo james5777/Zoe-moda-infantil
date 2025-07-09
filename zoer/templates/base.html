@@ -109,9 +109,10 @@
                             <hr class="dropdown-divider">
                         </li>
                         {% endif %}
+                        {% if g.user%}
                         <li><a class="dropdown-item" href="{{ url_for('auth.profile') }}">Mi cuenta</a></li>
                         <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Cerrar sesion</a></li>
-                        {% if g.user%}
+                        
                         <hr class="dropdown-divider">
                         <li><a class="dropdown-item" href="{{ url_for('admin.admin_dashboard') }}">Administrador</a></li>
                         {% endif %}
@@ -154,10 +155,10 @@
                 <a href="{{ url_for('home.index') }}" class="text-decoration-none fs-4 text-secondary-emphasis">Inicio</a>
             </div>
             <div class="col-sm-4 col-lg-2 pt-5">
-                <a href="index.html#redes" class="text-decoration-none fs-4 text-secondary-emphasis">Contactanos</a>
+                <a href="{{ url_for('home.index') }}" class="text-decoration-none fs-4 text-secondary-emphasis">Contactanos</a>
             </div>
             <div class="col-sm-4 col-lg-2 pt-5">
-                <a href="index.html#navbar" class="text-decoration-none fs-4 text-secondary-emphasis">Buscador</a>
+                <a href="{{ url_for('home.index') }}" class="text-decoration-none fs-4 text-secondary-emphasis">Buscador</a>
             </div>
             <div class="col col-sm-12 my-3 col-lg-6 ">
                 <h2 class="text-secondary-emphasis">Medios de pago</h2>
