@@ -29,19 +29,6 @@ def index():
             'imagen_url' : imagen_url_para_plantilla # Pasa la URL de la imagen (real o por defecto)
         })
 
-    # for producto in productos:
-    #     #Obtener la primera imagen del producto
-    #     imagen_principal = ImagenProducto.query.filter_by(IDProducto=producto.IDProducto, EsPrincipal=True).first()
-
-
-        #Si no hay imagen principal, tomar la primera que encuentre
-        # if not imagen_principal:
-        #     imagen_principal = ImagenProducto.query.filter_by(IDProducto=producto.IDProducto).first()
-
-        # productos_con_imagenes.append({
-        #     'producto' : producto,       ###Ruta a una imagen por defecto
-        #     'imagen_url' : imagen_principal.RutaImagen if imagen_principal else url_for('static', filename='img/default.jpg')
-        # })
-     # Pasa la lista de productos (con sus imágenes) a la plantilla
+ 
     return render_template('index.html', productos=productos_con_imagenes)
 
